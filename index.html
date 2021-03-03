@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dijkstra Algorithm</title>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <script>
+      var parameters = {
+        appName: "classic",
+        width: 650,
+        height: 650,
+        showToolBar: true,
+        showAlgebraInput: false,
+        showMenuBar: false,
+        material_id: "ysbmetzp",
+        showResetIcon: true,
+        borderColor: "#000000",
+        enableShiftDragZoom: true,
+        enableRightClick: true,
+      };
+
+      var dijkstraDiv = new GGBApplet(parameters, true);
+      window.onload = function () {
+        dijkstraDiv.inject("ggb-element");
+      };
+    </script>
+
+    <script src="dijkstra.js"></script>
+  </head>
+  <body>
+    <h1>Dijkstra Algorithm</h1>
+    <h3>with Geogebra</h3>
+    <div id="ggb-element"></div>
+    <input type="button" value="Get Graph" onclick="getPath()" />
+    <input type="button" value="Shortest Path" onclick="dijkstra()" />
+    <input
+      type="text"
+      name="startNode"
+      id="startNode"
+      placeholder="Start Node"
+    />
+    <input type="text" name="endNode" id="endNode" placeholder="End Node" />
+
+    <p>
+      Use the text field above to specify the start and the end node.
+      <br />After every execution you need to reload the graph in the geogebra
+      applet and press the "Get Graph" button in order to retrieve it. <br />Use
+      the "Shortest Path" button to launch the execution. You will see the
+      result of the algorithm highlight in geogebra.
+    </p>
+  </body>
+</html>
