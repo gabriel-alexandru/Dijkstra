@@ -1,3 +1,3 @@
-###Dijkstra Algorithm for the shortest path in a graph
+# Dijkstra Algorithm for the shortest path in a graph
 
-#Interactive version made with GeoGebra applet
+### Interactive version made with GeoGebra applet
