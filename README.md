@@ -14,6 +14,6 @@ This version is still a Work in Progress so there may by many bugs.
 
 ### TO FIX
 
-[ ] The shortest path graph needs to be cleared when inserting new nodes / edges or when checking the shortest path between two others nodes.
+- [ ] The shortest path graph needs to be cleared when inserting new nodes / edges or when checking the shortest path between two others nodes.
 
-[ ] Simplify the process of retrieving the graph from GeoGebra and getting the shortest path, maybe using only a button instead of two.
+- [ ] Simplify the process of retrieving the graph from GeoGebra and getting the shortest path, maybe using only a button instead of two.
