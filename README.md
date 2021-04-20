@@ -4,7 +4,7 @@
 
 This is an interactive website that implements the famous Dijkstra Algorithm. This algorithm returns the shortest path in a graph from a starting node to an end node.
 
-The website can be found [here](https://gabrielalexandru.altervista.org/projects/maths/dijkstra)
+The website can be found [here](https://gabrielalexandru.altervista.org/projects/dijkstra)
 
 ---
 
