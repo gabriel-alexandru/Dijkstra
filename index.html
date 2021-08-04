@@ -5,50 +5,164 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dijkstra Algorithm</title>
+
     <script src="https://www.geogebra.org/apps/deployggb.js"></script>
     <script>
       var parameters = {
-        appName: "classic",
-        width: 650,
-        height: 650,
+        appName: 'classic',
+        width: 550,
+        height: 550,
         showToolBar: true,
         showAlgebraInput: false,
         showMenuBar: false,
-        material_id: "ysbmetzp",
+        material_id: 'ysbmetzp',
         showResetIcon: true,
-        borderColor: "#000000",
+        borderColor: '#000000',
         enableShiftDragZoom: true,
         enableRightClick: true,
       };
 
+      parameters.appletOnLoad = function (api) {
+        updateTable();
+        api.registerAddListener('updateTable');
+        api.registerRemoveListener('updateTable');
+        api.registerUpdateListener('updateTable');
+      };
+
       var dijkstraDiv = new GGBApplet(parameters, true);
       window.onload = function () {
-        dijkstraDiv.inject("ggb-element");
+        dijkstraDiv.inject('ggb-element');
       };
     </script>
 
     <script src="dijkstra.js"></script>
+    <style>
+      .dijkstra {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dijkstra .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dijkstra .actions {
+        grid-row-start: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dijkstra .actions #startNode {
+        grid-column-start: 1;
+      }
+      .dijkstra .actions #endNode {
+        grid-column-start: 2;
+      }
+
+      .dijkstra .actions #shortest {
+        grid-column-start: 1;
+      }
+      .dijkstra .actions #reset {
+        grid-column-start: 2;
+      }
+
+      .dijkstra .actions input {
+        margin: 5px;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      .dijkstra #ggb-element {
+        margin: 5px;
+        grid-row-start: 1;
+      }
+
+      .table-container {
+        width: 100%;
+        margin: 5px;
+      }
+
+      .table-scroll {
+        height: 550px;
+        overflow: hidden;
+        overflow-y: scroll;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        grid-column-start: 2;
+      }
+
+      thead th {
+        border: 1px solid black;
+        background-color: cornflowerblue;
+        color: white;
+      }
+
+      tbody td {
+        border: 1px solid black;
+      }
+
+      tbody td input {
+        width: 90%;
+        text-align: center;
+      }
+
+      .actions a {
+        border: 1px solid black;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bolder;
+        background-color: cornflowerblue;
+        color: white;
+        cursor: pointer;
+        margin: 5px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Dijkstra Algorithm</h1>
-    <h3>with Geogebra</h3>
-    <div id="ggb-element"></div>
-    <input type="button" value="Get Graph" onclick="getPath()" />
-    <input type="button" value="Shortest Path" onclick="dijkstra()" />
-    <input
-      type="text"
-      name="startNode"
-      id="startNode"
-      placeholder="Start Node"
-    />
-    <input type="text" name="endNode" id="endNode" placeholder="End Node" />
-
-    <p>
-      Use the text field above to specify the start and the end node.
-      <br />After every execution you need to reload the graph in the geogebra
-      applet and press the "Get Graph" button in order to retrieve it. <br />Use
-      the "Shortest Path" button to launch the execution. You will see the
-      result of the algorithm highlight in geogebra.
-    </p>
+    <div class="dijkstra">
+      <h1>Dijkstra Algorithm</h1>
+      <h3>with Geogebra</h3>
+      <div class="container">
+        <div id="ggb-element"></div>
+        <div class="actions">
+          <a id="shortest" onclick="dijkstra()">Shortest Path</a>
+          <a id="reset" onclick="resetGraph()">Reset Graph</a>
+          <a id="reset" onclick="resetPath()">Reset Path</a>
+          <input
+            type="text"
+            name="startNode"
+            id="startNode"
+            placeholder="Start Node"
+          />
+          <input
+            type="text"
+            name="endNode"
+            id="endNode"
+            placeholder="End Node"
+          />
+        </div>
+        <div class="table-container">
+          <div class="table-scroll">
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Edge</th>
+                    <th>Weight</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
